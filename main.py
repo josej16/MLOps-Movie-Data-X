@@ -150,7 +150,7 @@ def get_recomendation(title):
     answer = []
     for i in recomended_movies:
         movie = train.to_raw_iid(i)
-        answer.append(df['title'][df['id'] == movie])
+        answer.append(list(df['title'][df['id'] == movie])[0])
 
     return {'recomendacion':answer}
 

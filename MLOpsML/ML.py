@@ -26,7 +26,7 @@ df_svd = pd.read_csv('Movie_Rating_ML.csv', sep=';', encoding='utf-8')
    En este caso esta limitacion puede afectar la eficacia de nuestro modelo, pero dado las circunstancias
    sera lo mejor.'''
 
-df_svd = df_svd.sample(n=1500)
+df_svd = df_svd.sample(n=1500,random_state=33)
 
 
 '''Dicho eso procedemos.

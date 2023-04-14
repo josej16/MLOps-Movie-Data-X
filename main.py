@@ -145,7 +145,7 @@ def get_contents(rating: str):
 
 @app.get('/get_recomendation/{title}')
 def get_recomendation(title):
-    movie_id_inner = train.to_inner_iid(str(df['id'][df['title'] == title]))
+    movie_id_inner = train.to_inner_iid(list(df['id'][df['title'] == title])[0])
     recomended_movies = knn.get_neighbors(movie_id_inner, k=5)
     answer = []
     for i in recomended_movies:

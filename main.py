@@ -21,8 +21,8 @@ filename2 = 'MLOpsML/train.pkl'
 with open(filename, 'rb') as file:
     knn = pickle.load(file)
 
-with open(filename, 'rb') as file:
-    train = pickle.load(file)
+with open(filename2, 'rb') as file2:
+    train = pickle.load(file2)
 
 '''Aqui importamos el modulo desde fastapi el modulo FasAPI para iniciar el proceso'''
 

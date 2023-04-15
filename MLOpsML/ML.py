@@ -13,7 +13,7 @@ from surprise import Reader, Dataset, KNNWithMeans
 
 '''Se procede a cargar el archivo formato [userId, movieId, score]'''
 
-df_svd = pd.read_csv('Movie_Rating_ML.csv', sep=';', encoding='utf-8')
+df_movies = pd.read_csv('Movie_Rating_ML.csv', sep=';', encoding='utf-8')
 
 
 '''El archivo cargado genera un problema y es el tamaño del mismo.
@@ -26,7 +26,7 @@ df_svd = pd.read_csv('Movie_Rating_ML.csv', sep=';', encoding='utf-8')
    En este caso esta limitacion puede afectar la eficacia de nuestro modelo, pero dado las circunstancias
    sera lo mejor.'''
 
-df_svd = df_svd.sample(n=1500,random_state=33)
+df_movies = df_movies.sample(n=1500,random_state=33)
 
 
 '''Dicho eso procedemos.
@@ -45,7 +45,7 @@ reader = Reader(rating_scale=(0,5))
 options = {'name':'cosine',
           'user_based': False}
 knn = KNNWithMeans(sim_options=options)
-data = Dataset.load_from_df(df_svd,reader)
+data = Dataset.load_from_df(df_movies,reader)
 
 
 '''Ahora para el modelo KNNWithMeans no trabajo con el formato bruto que retorna el metodo load_from_df
@@ -55,6 +55,18 @@ data = Dataset.load_from_df(df_svd,reader)
 
 train = data.build_full_trainset()
 knn.fit(train)
+
+
+'''Procedemos a guardar las peliculas con las que entrenamos el modelo, ya que son las que pueden ser
+   recomendadas.'''
+
+df_titles = pd.read_csv('..\MLOpsCleanData\MovieCleanData.csv', sep=';', encoding='utf-8')
+
+df_titles = df_titles[['id','title']]
+
+df_trained = pd.merge(left=df_movies['movieId'], right=df_titles, left_on='movieId', right_on='id', how='left')
+
+df_trained[['id','title']].to_csv('..\MLOpsCleanData\Trained_Movies.csv',sep=';',encoding='utf-8',index=False)
 
 
 '''Ahora lo que hacemos para que la API no maneje el dataset de 11 millones de filas en sus limitadas

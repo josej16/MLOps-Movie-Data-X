@@ -13,7 +13,7 @@ from surprise import Reader, Dataset, KNNWithMeans
 
 '''Se procede a cargar el archivo formato [userId, movieId, score]'''
 
-df_movies = pd.read_csv('Movie_Rating_ML.csv', sep=';', encoding='utf-8')
+df_movies = pd.read_csv('..\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encoding='utf-8')
 
 
 '''El archivo cargado genera un problema y es el tamaño del mismo.

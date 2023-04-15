@@ -140,8 +140,16 @@ def get_contents(rating: str):
 
     return {'rating': rating, 'contenido': answer}
 
-
-
+'''Con esta funcion usaremos un sistema de recomendacion con filtro colaborativo item - item para recomendar
+   una pelicula en base a su puntuacion.
+   
+   Para ello ya tenemos el archivo dataset "train" y el modelo "knn" ya entrenados para empezar el proceso.
+   
+   Primero debemos "encriptar" el id del titulo de la pelicula pasado, esto se hace con el to_inner_iid,
+   luego con el metodo get_neighbors le pasamos el id de la pelicula que vimos y la cantidad de recomendaciones,
+   en este caso k=5.
+   
+   Luego vamos iterando las respuestas y "desencriptando una por una para añadirla a la lista answer"'''
 
 @app.get('/get_recomendation/{title}')
 def get_recomendation(title):

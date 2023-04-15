@@ -136,7 +136,7 @@ rating_score = pd.concat((score1,score2,score3,score4,score5,score6,score7,score
 rating_score.rename(columns={'rating': 'score'},inplace=True)
 movie_rating = rating_score[['score','movieId']].groupby('movieId').agg('mean').round(2)
 df = pd.merge(left=df,right=movie_rating, left_on='id',right_on='movieId', how='left')
-# df.to_csv('MLOps-Movie-Data\MLOpsCleanData\MovieCleanData.csv',sep=';',encoding='utf-8',index=False)
+# df.to_csv('..\MLOpsCleanData\MovieCleanData.csv',sep=';',encoding='utf-8',index=False)
 
 
 '''Ya que nos aproximamos a el apartado de ML seria buena idea arreglar el dataset rating_score para
@@ -150,4 +150,4 @@ df = pd.merge(left=df,right=movie_rating, left_on='id',right_on='movieId', how='
 df_knn = rating_score[['userId','movieId','score']]
 df_knn['userId'] = pd.to_numeric(df_knn['userId'],downcast='integer')
 df_knn['score'] = pd.to_numeric(df_knn['score'],downcast='float')
-# df_knn.to_csv('MLOps-Movie-Data\MLOpsML\Movie_Rating_ML.csv', sep=';', encoding='utf-8', index=False)
+# df_knn.to_csv('..\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encoding='utf-8', index=False)

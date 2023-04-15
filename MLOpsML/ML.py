@@ -44,7 +44,7 @@ df_movies = df_movies.sample(n=1500,random_state=33)
 reader = Reader(rating_scale=(0,5))
 options = {'name':'cosine',
           'user_based': False}
-knn = KNNWithMeans(sim_options=options)
+knn = KNNWithMeans(k=5, min_k=50, sim_options=options)
 data = Dataset.load_from_df(df_movies,reader)
 
 

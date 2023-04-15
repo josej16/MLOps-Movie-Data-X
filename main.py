@@ -125,7 +125,7 @@ def get_actor(platform: str, year: int):
 @app.get('/prod_per_county/{tipo}/{pais}/{anio}')
 def prod_per_county(tipo: str,pais: str,anio: int):
     answer = len(df[(df['type'] == tipo)
-                 & (df['country'] == pais)
+                 & (pais in df['country'].str.split(', '))
                  & (df['release_year'] == anio)])
 
     return {'pais': pais, 'anio': anio, 'peliculas': answer}

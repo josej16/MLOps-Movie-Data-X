@@ -12,6 +12,7 @@ El proyecto se organiza en las siguientes carpetas y archivos:
 
 - `MLOpsCleanData/`: Carpeta que contiene los datos utilizados para el ETL y el entrenamiento del modelo.
 - `MLOpsETL/`: Carpeta que contiene los scripts de Python utilizados para realizar el ETL
+-       `MLOpsReviews` : Esta carpeta se encuentra en MLOpsETL y contendra la data cruda necesaria para el ETL
 - `MLOpsML/`: Carpeta que contiene los scripts de Python utilizados para realizar el entrenamiento del modelo KNNWithMeans de la librería Surprise
 - `main.py`: Archivo donde se encuentra todo el código de la API y sus endpoints para funcionar
 - `requirements.txt`: Archivo que enumera las dependencias de Python necesarias para ejecutar la aplicación.

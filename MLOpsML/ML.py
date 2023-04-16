@@ -13,7 +13,7 @@ from surprise import Reader, Dataset, KNNWithMeans
 
 '''Se procede a cargar el archivo formato [userId, movieId, score]'''
 
-df_movies = pd.read_csv('..\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encoding='utf-8')
+df_movies = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encoding='utf-8')
 
 
 '''El archivo cargado genera un problema y es el tamaño del mismo.
@@ -63,13 +63,13 @@ knn.fit(train)
 '''Procedemos a guardar las peliculas con las que entrenamos el modelo, ya que son las que pueden ser
    recomendadas.'''
 
-df_titles = pd.read_csv('..\MLOpsCleanData\MovieCleanData.csv', sep=';', encoding='utf-8')
+df_titles = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsCleanData\MovieCleanData.csv', sep=';', encoding='utf-8')
 
 df_titles = df_titles[['id','title']]
 
 df_trained = pd.merge(left=df_movies['movieId'], right=df_titles, left_on='movieId', right_on='id', how='left')
 
-df_trained[['id','title']].to_csv('..\MLOpsCleanData\Trained_Movies.csv',sep=';',encoding='utf-8',index=False)
+df_trained[['id','title']].to_csv(r'MLOps-Movie-Data-X\MLOpsCleanData\Trained_Movies.csv',sep=';',encoding='utf-8',index=False)
 
 
 '''Ahora lo que hacemos para que la API no maneje el dataset de 11 millones de filas en sus limitadas
@@ -80,11 +80,11 @@ df_trained[['id','title']].to_csv('..\MLOpsCleanData\Trained_Movies.csv',sep=';'
 
 import pickle
 
-filename = 'Model_KNNM_Movie.pkl'
+filename = r'MLOps-Movie-Data-X\MLOpsML\Model_KNNM_Movie.pkl'
 with open(filename, 'wb') as file:
     pickle.dump(knn, file)
 
-filename2 = 'train.pkl'
+filename2 = r'MLOps-Movie-Data-X\MLOpsML\train.pkl'
 with open(filename2, 'wb') as file:
     pickle.dump(train, file)
       

@@ -84,3 +84,8 @@ with open(filename, 'wb') as file:
 filename2 = 'train.pkl'
 with open(filename2, 'wb') as file:
     pickle.dump(train, file)
+      
+      
+'''Dado el problema de la limitacion de nuestros datos, al momento de obtener una recomendacion de una pelicula
+   que aparezca solo 1 vez obtendremos siempre las mismas recomendaciones, para probar el modelo podemos hacer
+   un values_counts para ver cuales se repiten y obtener recomendaciones.'''

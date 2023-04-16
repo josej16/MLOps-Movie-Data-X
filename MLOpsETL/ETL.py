@@ -3,13 +3,13 @@ from numpy import nan
 
 '''Importamos la data para cada plataforma de contenido'''
 
-amazon_data = pd.read_csv('MLOpsReviews/amazon_prime_titles.csv',sep=',',encoding='utf-8')
+amazon_data = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\amazon_prime_titles.csv',sep=',',encoding='utf-8')
 
-netflix_data = pd.read_csv('MLOpsReviews/netflix_titles.csv', sep=',', encoding='utf-8')
+netflix_data = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\netflix_titles.csv', sep=',', encoding='utf-8')
 
-disney_data = pd.read_csv('MLOpsReviews/disney_plus_titles.csv', sep=',', encoding='utf-8')
+disney_data = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\disney_plus_titles.csv', sep=',', encoding='utf-8')
 
-hulu_data = pd.read_csv('MLOpsReviews/hulu_titles.csv', sep=',', encoding='utf-8')
+hulu_data = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\hulu_titles.csv', sep=',', encoding='utf-8')
 
 
 '''Para el resto del proceso de etl nos sera muy util el diccionario platforms,
@@ -116,14 +116,14 @@ SplitDuration(df)
 '''Aqui necesitaremos cargar nueva data para un servicio de nuestra api, la cual contiene informacion
    sobre el rating de los usuarios hacia las peliculas en concreto'''
 
-score1 = pd.read_csv('MLOpsReviews/ratings/1.csv')
-score2 = pd.read_csv('MLOpsReviews/ratings/2.csv')
-score3 = pd.read_csv('MLOpsReviews/ratings/3.csv')
-score4 = pd.read_csv('MLOpsReviews/ratings/4.csv')
-score5 = pd.read_csv('MLOpsReviews/ratings/5.csv')
-score6 = pd.read_csv('MLOpsReviews/ratings/6.csv')
-score7 = pd.read_csv('MLOpsReviews/ratings/7.csv')
-score8 = pd.read_csv('MLOpsReviews/ratings/8.csv')
+score1 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\1.csv')
+score2 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\2.csv')
+score3 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\3.csv')
+score4 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\4.csv')
+score5 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\5.csv')
+score6 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\6.csv')
+score7 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\7.csv')
+score8 = pd.read_csv(r'MLOps-Movie-Data-X\MLOpsETL\MLOpsReviews\ratings\8.csv')
 
 rating_score = pd.concat((score1,score2,score3,score4,score5,score6,score7,score8))
 
@@ -137,7 +137,7 @@ rating_score = pd.concat((score1,score2,score3,score4,score5,score6,score7,score
 rating_score.rename(columns={'rating': 'score'},inplace=True)
 movie_rating = rating_score[['score','movieId']].groupby('movieId').agg('mean').round(2)
 df = pd.merge(left=df,right=movie_rating, left_on='id',right_on='movieId', how='left')
-# df.to_csv('..\MLOpsCleanData\MovieCleanData.csv',sep=';',encoding='utf-8',index=False)
+df.to_csv(r'MLOps-Movie-Data-X\MLOpsCleanData\MovieCleanData.csv',sep=';',encoding='utf-8',index=False)
 
 
 '''Ya que nos aproximamos a el apartado de ML seria buena idea arreglar el dataset rating_score para
@@ -151,4 +151,4 @@ df = pd.merge(left=df,right=movie_rating, left_on='id',right_on='movieId', how='
 df_knn = rating_score[['userId','movieId','score']]
 df_knn['userId'] = pd.to_numeric(df_knn['userId'],downcast='integer')
 df_knn['score'] = pd.to_numeric(df_knn['score'],downcast='float')
-# df_knn.to_csv('..\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encoding='utf-8', index=False)
+df_knn.to_csv(r'MLOps-Movie-Data-X\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encoding='utf-8', index=False)

@@ -26,7 +26,7 @@ df_movies = pd.read_csv('..\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encodi
    En este caso esta limitacion puede afectar la eficacia de nuestro modelo, pero dado las circunstancias
    sera lo mejor.'''
 
-df_movies = df_movies.sample(n=1500,random_state=33)
+df_movies = df_movies[:1750]
 
 
 '''Dicho eso procedemos.

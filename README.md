@@ -1,8 +1,3 @@
-# MLOps-Movie-Data
-
-# MLOps-Movie-Data
-I made a API from amazon Prime Video, Hulu, Disney+ and Netflix Data, using fastapi, uvicorn and pandas library
-
 # API con Sistema de recomendación de películas
 
 Este proyecto utiliza Python para construir un sistema de recomendación de películas utilizando el modelo KNNWithMeans de la librería Surprise, además de varios endpoints para la data de plataformas como Hulu, Amazon Prime Video, Netflix y Disney+. El proyecto utiliza las bibliotecas Pandas y Surprise para la parte de machine learning y Render para construir una API.

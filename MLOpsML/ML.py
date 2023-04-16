@@ -24,7 +24,10 @@ df_movies = pd.read_csv('..\MLOpsCleanData\Movie_Rating_ML.csv', sep=';', encodi
    de 16MB.
    
    En este caso esta limitacion puede afectar la eficacia de nuestro modelo, pero dado las circunstancias
-   sera lo mejor.'''
+   sera lo mejor.
+   
+   Es muy importante no usar el metodo .sample para obtener la data ya que esta tiene un formato de "chuncks" de data por usuario,
+   por lo tanto si usamos un .sample podriamos no tener referencias de otros usuarios por esa aleatoriedad.'''
 
 df_movies = df_movies[:1750]
 

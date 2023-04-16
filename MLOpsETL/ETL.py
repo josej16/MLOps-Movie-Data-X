@@ -106,6 +106,7 @@ def SplitDuration(data):
                                                                                       ,downcast='integer').mean()
 
         data['duration_int'] = data['duration_int'].astype('int64',errors='ignore')
+        data['duration_type'][data['duration_type'] == 'seasons'] = 'season'
     else:
         print('already exists "duration_int, duration_type"')
 

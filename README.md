@@ -12,7 +12,7 @@ El proyecto se organiza en las siguientes carpetas y archivos:
 
 - `MLOpsCleanData/`: Carpeta que contiene los datos utilizados para el ETL y el entrenamiento del modelo.
 - `MLOpsETL/`: Carpeta que contiene los scripts de Python utilizados para realizar el ETL
--       `MLOpsReviews` : Esta carpeta se encuentra en MLOpsETL y contendra la data cruda necesaria para el ETL
+-       `MLOpsReviews` : Esta carpeta se encuentra en MLOpsETL y contendra la data cruda necesaria para el ETL, por las limitaciones de espacio dejo el link aqui: https://drive.google.com/drive/folders/1eupChCuqjsLqPCVyYODfd4t7Ecuyz5R_?usp=sharing
 - `MLOpsML/`: Carpeta que contiene los scripts de Python utilizados para realizar el entrenamiento del modelo KNNWithMeans de la librería Surprise, ademas de los archivos pickle del modelo y data creados
 - `main.py`: Archivo donde se encuentra todo el código de la API y sus endpoints para funcionar
 - `requirements.txt`: Archivo que enumera las dependencias de Python necesarias para ejecutar la aplicación.
@@ -24,6 +24,7 @@ Para ejecutar el proyecto, se necesitan los siguientes requisitos:
 - Python 3.7 o superior
 - Las bibliotecas listadas en `requirements.txt`
 - Los datos de películas y calificaciones en formato CSV
+- la data de este link https://drive.google.com/drive/folders/1eupChCuqjsLqPCVyYODfd4t7Ecuyz5R_?usp=sharing descargada en la carpeta `MLOpsReviews`
 
 ## Proceso
 

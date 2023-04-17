@@ -99,7 +99,7 @@ Se crearon seis funciones que se corresponden con los siguientes requerimientos:
 
 6. La cantidad total de contenidos/productos (películas, series, etc) según el rating de audiencia dado. La función llamada `get_contents(rating)` devuelve el número total de contenidos con ese rating de audiencias.
 
-7. Para el último endpoint de la API, `get_recomendation(title)`, se ha implementado un sistema de recomendación basado en el modelo de K-Nearest Neighbors With Means(KNNWithMeans) utilizando la librería Surprise de Python. El endpoint recibe como entrada el título de una película y devuelve los 5 vecinos más cercanos basados en la similitud de los ratings de los usuarios.
+7. Para el último endpoint de la API, `get_recomendation(title)`, se ha implementado un sistema de recomendación basado en el modelo de K-Nearest Neighbors With Means(KNNWithMeans) utilizando la librería Surprise de Python. El endpoint recibe como entrada el título de una película y devuelve los 5 vecinos más cercanos basados en la similitud de los ratings de los usuarios. Por motivos de pocos recursos debera ser utilizada con las peliculas entrenadas, es decir las 1750 primeras, para eso en la carpeta `MLOpsCleanData` estara el archivo `Trained_Movies.csv` desde el cual podran elegir una para probar.
 
 Los resultados se presentan en un formato `JSON`.
 

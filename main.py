@@ -128,7 +128,7 @@ def prod_per_county(tipo: str,pais: str,anio: int):
                  & (df['country'].str.contains(pais))
                  & (df['release_year'] == anio)])
 
-    return {'pais': pais, 'anio': anio, 'peliculas': answer}
+    return {'pais': pais, 'anio': anio, 'contenido': answer}
 
 
 '''En esta funcion se requeria que retornara la cantidad de productos con un rating especifico de
